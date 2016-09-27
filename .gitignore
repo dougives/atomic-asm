@@ -1,0 +1,9 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ipch/AutoPCH/_SFI_E0C38A5B-3FE7-425E-A6CF-64599D69B187_-41f17365/ATOMIC-113a7007/ATOMIC.ipch
+/.VC.db
+/.VC.VC.opendb
+/.gitignore
