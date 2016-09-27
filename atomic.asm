@@ -142,7 +142,7 @@ atomic_xadd32 endp
 atomic_xinc64 proc
 
 	mov eax, 1
-	lock xinc dword ptr [rcx], eax
+	lock xadd dword ptr [rcx], eax
 	inc eax
 	ret
 
@@ -153,7 +153,7 @@ atomic_xinc64 endp
 atomic_xinc32 proc
 
 	mov eax, 1
-	lock xinc qword ptr [rcx], rax
+	lock xadd qword ptr [rcx], rax
 	inc eax
 	ret
 
