@@ -18,3 +18,6 @@ extern void atomic_increment64(volatile uint64_t* addr);
 
 extern int atomic_xadd32(volatile uint32_t* addr);
 extern int atomic_xadd64(volatile uint64_t* addr);
+
+extern int atomic_xinc32(volatile uint32_t* addr);
+extern int atomic_xinc64(volatile uint64_t* addr);
