@@ -6,6 +6,8 @@ public atomic_set64
 public atomic_set32
 public atomic_increment64
 public atomic_increment32
+public atomic_xadd64
+public atomic_xadd32
 
 ; assumes threads aren't using the same rsp...
 
@@ -110,6 +112,28 @@ atomic_increment32 proc
 	ret
 
 atomic_increment32 endp
+
+;------------------------------------------------------------------------------
+
+atomic_xadd64 proc
+
+	mov eax, 1
+	lock xadd dword ptr [rcx], eax
+	inc eax
+	ret
+
+atomic_xadd64 endp
+
+;------------------------------------------------------------------------------
+
+atomic_xadd32 proc
+
+	mov eax, 1
+	lock xadd qword ptr [rcx], rax
+	inc eax
+	ret
+
+atomic_xadd32 endp
 
 ;------------------------------------------------------------------------------
 
