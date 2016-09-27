@@ -119,7 +119,9 @@ atomic_increment32 endp
 
 atomic_xadd64 proc
 
-	lock xadd qword ptr [rcx], rdx
+	mov rax, rdx
+	lock xadd qword ptr [rcx], rax
+	add rax, rdx
 	ret
 
 atomic_xadd64 endp
@@ -128,7 +130,9 @@ atomic_xadd64 endp
 
 atomic_xadd32 proc
 
-	lock xadd dword ptr [rcx], edx
+	mov eax, edx
+	lock xadd dword ptr [rcx], eax
+	add eax, edx
 	ret
 
 atomic_xadd32 endp
