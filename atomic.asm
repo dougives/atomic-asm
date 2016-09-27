@@ -4,7 +4,8 @@ public atomic_lock64
 public atomic_unlock64
 public atomic_set64
 public atomic_set32
-public atomic_increment
+public atomic_increment64
+public atomic_increment32
 
 ; assumes threads aren't using the same rsp...
 
@@ -94,12 +95,21 @@ atomic_set32 endp
 
 ;------------------------------------------------------------------------------
 
-atomic_increment proc
+atomic_increment64 proc
 
 	lock inc qword ptr [rcx]
 	ret
 
-atomic_increment endp
+atomic_increment64 endp
+
+;------------------------------------------------------------------------------
+
+atomic_increment32 proc
+
+	lock inc dword ptr [rcx]
+	ret
+
+atomic_increment32 endp
 
 ;------------------------------------------------------------------------------
 
