@@ -21,8 +21,7 @@ atomic_lock32 proc
 	lock cmpxchg dword ptr [rcx], esp
 	jne atomic_lock_blocked
 	dec eax
-	ret
-
+	
 atomic_lock_blocked:
 	ret
 
@@ -46,8 +45,7 @@ atomic_lock64 proc
 	lock cmpxchg qword ptr [rcx], rsp
 	jne atomic_lock_blocked
 	dec eax
-	ret
-
+	
 atomic_lock_blocked:
 	ret
 
