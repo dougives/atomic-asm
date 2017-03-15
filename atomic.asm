@@ -10,6 +10,8 @@ public atomic_xadd64
 public atomic_xadd32
 public atomic_xinc64
 public atomic_xinc32
+public atomic_xdec64
+public atomic_xdec32
 
 ; assumes threads aren't using the same rsp...
 
@@ -158,5 +160,29 @@ atomic_xinc32 proc
 atomic_xinc32 endp
 
 ;------------------------------------------------------------------------------
+
+atomic_xdec64 proc
+
+	mov eax, 1
+	lock xsub qword ptr [rcx], rax
+	dec eax
+	ret
+
+atomic_xinc64 endp
+
+;------------------------------------------------------------------------------
+
+atomic_xdec32 proc
+
+	mov eax, 1
+	lock xsub dword ptr [rcx], eax
+	dec eax
+	ret
+
+atomic_xdec32 endp
+
+;------------------------------------------------------------------------------
+
+
 
 end
