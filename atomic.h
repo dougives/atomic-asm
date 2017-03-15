@@ -21,3 +21,6 @@ extern uint64_t atomic_xadd64(volatile uint64_t* addr);
 
 extern uint32_t atomic_xinc32(volatile uint32_t* addr);
 extern uint64_t atomic_xinc64(volatile uint64_t* addr);
+
+extern uint32_t atomic_xdec32(volatile uint32_t* addr);
+extern uint64_t atomic_xdec64(volatile uint64_t* addr);
