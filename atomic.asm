@@ -6,12 +6,12 @@ public atomic_set64
 public atomic_set32
 public atomic_increment64
 public atomic_increment32
+public atomic_decrement64
+public atomic_decrement32
 public atomic_xadd64
 public atomic_xadd32
 public atomic_xinc64
 public atomic_xinc32
-public atomic_xdec64
-public atomic_xdec32
 
 ; assumes threads aren't using the same rsp...
 
@@ -117,6 +117,24 @@ atomic_increment32 endp
 
 ;------------------------------------------------------------------------------
 
+atomic_decrement64 proc
+
+	lock dec qword ptr [rcx]
+	ret
+
+atomic_decrement64 endp
+
+;------------------------------------------------------------------------------
+
+atomic_decrement32 proc
+
+	lock dec dword ptr [rcx]
+	ret
+
+atomic_decrement32 endp
+
+;------------------------------------------------------------------------------
+
 atomic_xadd64 proc
 
 	mov rax, rdx
@@ -158,28 +176,6 @@ atomic_xinc32 proc
 	ret
 
 atomic_xinc32 endp
-
-;------------------------------------------------------------------------------
-
-atomic_xdec64 proc
-
-	mov eax, 1
-	lock xsub qword ptr [rcx], rax
-	dec eax
-	ret
-
-atomic_xinc64 endp
-
-;------------------------------------------------------------------------------
-
-atomic_xdec32 proc
-
-	mov eax, 1
-	lock xsub dword ptr [rcx], eax
-	dec eax
-	ret
-
-atomic_xdec32 endp
 
 ;------------------------------------------------------------------------------
 
